@@ -12,6 +12,9 @@ int highScoreInt;
 //Forhindringer
 Forhindringer F1;
 
+//Particle
+ArrayList<Particle> particle;
+
 void setup(){
   textAlign(CENTER);
   size(1000,800);  
@@ -25,6 +28,9 @@ void setup(){
   //Canon
   canon = new Canon();
   balls = new ArrayList<Canonball>();
+
+  //Particle
+  particle = new ArrayList<Particle>();
 }
 
 void draw(){
@@ -55,6 +61,7 @@ void draw(){
   }
   
   canon.makeCannon();
+  
 }
 
 void keyPressed(){
