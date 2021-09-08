@@ -4,7 +4,6 @@ PVector loc;
 PVector acc;
 boolean destroy;
 
-
   float aVel = 0;
   float angle = 0;
   float aAcc = 0.05;

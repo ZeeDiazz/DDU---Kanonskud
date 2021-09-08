@@ -1,8 +1,13 @@
 //Canon
 Canon canon;
 ArrayList<Canonball> balls;
-PVector g = new PVector(0, 0.05);
+PVector g = new PVector(0, 1);
 PVector gravity = new PVector(0, 10);
+
+PImage wheelImg;
+PImage canonImg;
+PImage wallImg;
+PImage landscapeImg;
 
 //Score
 String[] highScore;
@@ -19,8 +24,17 @@ void setup(){
   textAlign(CENTER);
   size(1000,800);  
   
+  
+  wheelImg = loadImage("Wheel.png");
+  wheelImg.resize(120,120);
+  canonImg = loadImage("Canon.png");
+  canonImg.resize(120,60);
+  wallImg = loadImage("wall.png");
+  landscapeImg = loadImage("landscape.png");
+  landscapeImg.resize(width,height);
+  
   int random = int(random(0,400));
-  F1 = new Forhindringer(800,80,random,200); //Maks 290
+  F1 = new Forhindringer(800,80,random,120);
   
   //Grab the highscore
   highScore = loadStrings("info.txt");
@@ -37,7 +51,8 @@ void draw(){
   
   highScoreInt = int(highScore[0]);
   clear();
-  background(120, 80, 255);
+  imageMode(CORNER);
+  image(landscapeImg,0,0);
 
   textSize(32);
   fill(255);
@@ -64,12 +79,8 @@ void draw(){
   
 }
 
-void keyPressed(){
-  newObstacle();
-}
-
 void newObstacle(){
-  F1.hTop = random(20,height-20);
+  F1.hTop = random(120,height-120);
 }
 
 

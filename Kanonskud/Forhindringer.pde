@@ -12,11 +12,11 @@ class Forhindringer{
   
   void lavForhindringer(){
     fill(255,0,0);
-    
+    imageMode(CORNER);
     //Øverste forhindring
-    rect(x,0,w,hTop);
+    image(wallImg,x,0,w,hTop);
     
     //Nederste forhindring
-    rect(x,hTop+pladsImellem,w,height); 
+    image(wallImg,x,hTop+pladsImellem,w,height); 
   }
 }
