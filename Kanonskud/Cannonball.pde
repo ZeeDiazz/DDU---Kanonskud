@@ -49,12 +49,26 @@ boolean destroy;
         println("Top side");
         destroy = true;
         score = 0;
+        
+        particles.add(new Particle(loc.x,loc.y,random(-0.5,0.5),random(-2,0)));
+        particles.add(new Particle(loc.x,loc.y,random(-0.5,0.5),random(-2,0)));
+        particles.add(new Particle(loc.x,loc.y,random(-0.5,0.5),random(-2,0)));
+        particles.add(new Particle(loc.x,loc.y,random(-0.5,0.5),random(-2,0)));
+        particles.add(new Particle(loc.x,loc.y,random(-0.5,0.5),random(-2,0)));
+        
         newObstacle();
       }
       if(loc.y+(w/2) > F1.hTop+F1.pladsImellem){
         println("Bot side");
         destroy = true;
         score = 0;
+        
+        particles.add(new Particle(loc.x,loc.y,random(-0.5,0.5),random(-2,0)));
+        particles.add(new Particle(loc.x,loc.y,random(-0.5,0.5),random(-2,0)));
+        particles.add(new Particle(loc.x,loc.y,random(-0.5,0.5),random(-2,0)));
+        particles.add(new Particle(loc.x,loc.y,random(-0.5,0.5),random(-2,0)));
+        particles.add(new Particle(loc.x,loc.y,random(-0.5,0.5),random(-2,0)));
+        
         newObstacle();
       }
     }

@@ -24,7 +24,15 @@ class Canon {
     c.applyForce( new PVector(x, y));
 
     balls.add(c);
-  }
+    particles.add(new Particle(50,780,random(0.5,1.5),random(-2,0)));  
+    particles.add(new Particle(50,780,random(0.5,1.5),random(-2,0)));  
+    particles.add(new Particle(50,780,random(0.5,1.5),random(-2,0)));  
+    particles.add(new Particle(50,780,random(0.5,1.5),random(-2,0)));  
+    particles.add(new Particle(50,780,random(0.5,1.5),random(-2,0)));  
+    particles.add(new Particle(50,780,random(0.5,1.5),random(-2,0)));  
+    particles.add(new Particle(50,780,random(0.5,1.5),random(-2,0))); 
+    particles.add(new Particle(50,780,random(0.5,1.5),random(-2,0)));  
+}
   
   
   float getDir() {

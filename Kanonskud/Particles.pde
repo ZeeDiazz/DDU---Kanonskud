@@ -1,21 +1,23 @@
 class Particle {
-  PVector location;
-  PVector velocity;
-  PVector acceleration;
-  float lifespan;
+  
+  PVector location = new PVector ();
+  PVector velocity = new PVector ();
+  PVector acceleration = new PVector (0,01);
+  float lifespan = 200.0;
 
   float mass = 1;
-
-  Particle(PVector l) {
-    acceleration = new PVector(0,0);
-    velocity = new PVector(random(-1,1),random(-2,0));
-    location = l.get();
-    lifespan = 255.0;
+  float x,y;
+  
+  Particle(float x, float y, float vX, float vY){
+    location.x = x;
+    location.y = y;
+    velocity.x = vX;
+    velocity.y = vY;
   }
 
   void run() {
-    ParticleMover();
-    ParticleDisplay();
+    particleMover();
+    particleDisplay();
   }
 
   void applyForce(PVector force) {
@@ -24,19 +26,19 @@ class Particle {
     acceleration.add(f);
   }
   
-  void ParticleMover() {
+  void particleMover() {
     velocity.add(acceleration);
     location.add(velocity);
     acceleration.mult(0);
-    lifespan -= 2.0;
+    lifespan -= 3.0;
   }
   
-  void ParticleDisplay() {
+  void particleDisplay() {
     float rgb = 220;
     rgb -= 75;
     stroke(rgb,lifespan);
-    fill(rgb,lifespan);
-    ellipse(location.x,location.y,8,8);
+    fill(rgb);
+    ellipse(location.x,location.y,10,10);
   }
 
   boolean isDead() {

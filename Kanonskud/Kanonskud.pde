@@ -13,7 +13,7 @@ int highScoreInt;
 Forhindringer F1;
 
 //Particle
-ArrayList<Particle> particle;
+ArrayList<Particle> particles;
 
 void setup(){
   textAlign(CENTER);
@@ -30,7 +30,8 @@ void setup(){
   balls = new ArrayList<Canonball>();
 
   //Particle
-  particle = new ArrayList<Particle>();
+  particles = new ArrayList<Particle>();
+
 }
 
 void draw(){
@@ -62,16 +63,25 @@ void draw(){
   
   canon.makeCannon();
   
+  try{
+    for (Particle p : particles){
+      p.run();
+      if (p.isDead() == true){
+        println(p);
+        particles.remove(p);
+       }
+     }
+   }
+   catch(Exception e){
+   }
 }
 
-void keyPressed(){
-  newObstacle();
+void keyPressed(){  
 }
 
 void newObstacle(){
   F1.hTop = random(20,height-20);
 }
-
 
 void mousePressed() {
   canon.shoot();
