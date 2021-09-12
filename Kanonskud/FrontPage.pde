@@ -7,6 +7,8 @@ class FrontPage{
   Button playButton = new Button(350, 500, 300, 60, 40, "Play");
   
   void showPages(){
+    imageMode(CORNER);
+    image(landscapeImg,0,0);
     textAlign(CORNER,CORNER);
     textSize(100);
     text("CanonBall",280,150);
@@ -71,8 +73,4 @@ class FrontPage{
     }
     
   }
-  
- // boolean playGame(){
-  //}
-  
 }

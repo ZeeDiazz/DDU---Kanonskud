@@ -1,88 +1,58 @@
-//Canon
-Canon canon;
-ArrayList<Canonball> balls;
-PVector g = new PVector(0, 0.05);
-PVector gravity = new PVector(0, 10);
+PImage landscapeImg;
+PImage wheelImg;
+PImage canonImg;
+PImage wallImg;
 
-//Score
-String[] highScore;
-int score = 0;
-int highScoreInt;
+InGame ingame = new InGame();
+FrontPage frontpage = new FrontPage();
 
-//Forhindringer
-Forhindringer F1;
-
-//Particle
-ArrayList<Particle> particles;
-
-void setup(){
+void setup() {
   textAlign(CENTER);
-  size(1000,800);  
+  size(1000, 800);  
+  ingame.setup();
   
-  int random = int(random(0,400));
-  F1 = new Forhindringer(800,80,random,200); //Maks 290
-  
-  //Grab the highscore
-  highScore = loadStrings("info.txt");
-  
-  //Canon
-  canon = new Canon();
-  balls = new ArrayList<Canonball>();
-
-  //Particle
-  particles = new ArrayList<Particle>();
-
+  wheelImg = loadImage("Wheel.png");
+  wheelImg.resize(120, 120);
+  canonImg = loadImage("Canon.png");
+  canonImg.resize(120, 60);
+  wallImg = loadImage("wall.png");
+  landscapeImg = loadImage("landscape.png");
 }
 
-void draw(){
-  
-  highScoreInt = int(highScore[0]);
+void draw() {
   clear();
-  background(120, 80, 255);
-
-  textSize(32);
-  fill(255);
-  text("Highscore: " + highScore[0], 400,100);
-  text("Current score: " + score, 400, 200);
-  
-  if(score > highScoreInt){
-    highScore[0] = str(score);
-    saveStrings("info.txt", highScore);
-    highScore = loadStrings("info.txt");
+  background(200);
+  //Reset cursor
+  if (!frontpage.htpButton.checkMouse() && !frontpage.playButton.checkMouse() && !frontpage.htp.homeBtn.checkMouse() && !ingame.homeBtn.checkMouse()){
+    cursor(ARROW);
   }
-  
-  F1.lavForhindringer();
-  
-  //Canon
-  for (int i = 0; i < balls.size(); i++) {
-    Canonball c = balls.get(i);
-    c.applyForce(gravity);
-    c.display();
-    c.update(0.016);
+  //Frontpage
+  if(!inGame()){
+    frontpage.showPages();
   }
-  
-  canon.makeCannon();
-  
-  try{
-    for (Particle p : particles){
-      p.run();
-      if (p.isDead() == true){
-        println(p);
-        particles.remove(p);
-       }
-     }
-   }
-   catch(Exception e){
-   }
-}
-
-void keyPressed(){  
-}
-
-void newObstacle(){
-  F1.hTop = random(20,height-20);
+  if(inGame()){
+    ingame.run(); 
+  }
 }
 
 void mousePressed() {
-  canon.shoot();
+  if(inGame()){
+   ingame.mousePressed();
+  }
+  frontpage.mousePressed();
+  
+}
+
+void mouseReleased() {
+ frontpage.mouseReleased();
+ if(inGame()){
+   ingame.mouseReleased();
+ }
+}
+
+boolean inGame(){
+  if(!frontpage.viewFrontPage && !frontpage.viewHowToPlay){
+    return true;
+  }
+  return false;
 }

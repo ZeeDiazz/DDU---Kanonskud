@@ -2,8 +2,8 @@ class Particle {
   
   PVector location = new PVector ();
   PVector velocity = new PVector ();
-  PVector acceleration = new PVector (0,01);
-  float lifespan = 200.0;
+  PVector acceleration = new PVector (0,0.1);
+  float lifespan = 200;
 
   float mass = 1;
   float x,y;
@@ -44,8 +44,7 @@ class Particle {
   boolean isDead() {
     if (lifespan < 0.0) {
       return true;
-    } else {
-      return false;
     }
+    return false;
   }
 }
